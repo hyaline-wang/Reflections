@@ -1,7 +1,7 @@
 name: deploy
 
 on:
-  # 每当 push 到 main 分支时触发部署
+  # 每当 push 到 master 分支时触发部署
   # Deployment is triggered whenever a push is made to the main branch.
   push:
     branches: [master]
@@ -54,4 +54,4 @@ jobs:
           build_dir: docs/.vuepress/dist
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-          GITHUB_TOKEN: $
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
