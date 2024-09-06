@@ -4,7 +4,7 @@ on:
   # 每当 push 到 main 分支时触发部署
   # Deployment is triggered whenever a push is made to the main branch.
   push:
-    branches: [main]
+    branches: [master]
   # 手动触发部署
   # Manually trigger deployment
   workflow_dispatch:
@@ -39,7 +39,10 @@ jobs:
       - name: Build VuePress site
         run: pnpm run docs:build
 
-
+      # add CNAME
+      - name: Add CNAME
+        run: cp CNAME docs/.vuepress/dist
+        
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
       - name: Deploy to GitHub Pages
