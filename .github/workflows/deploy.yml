@@ -36,7 +36,7 @@ jobs:
       - name: Replace 6th line in file
         run: |
           # Replace 6th line in example.txt with new content
-          sed -i "6s/.*/  base: '/Knowledge-Base/',/" docs/.vuepress/config.js
+          sed -i "6s|.*|  base: '/Knowledge-Base/',|" docs/.vuepress/config.js
       # 运行构建脚本
       # Run the build script
       - name: Build VuePress site
