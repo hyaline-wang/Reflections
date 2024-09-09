@@ -1,7 +1,7 @@
 ---
-title: netcard_driver
+title: 网卡驱动安装
 createTime: 2024/09/07 01:11:19
-permalink: /article/zkt7lipg/
+permalink: /linux_base/zkt7lipg/
 ---
 
 ## 网卡驱动修复
@@ -26,18 +26,17 @@ dkms status |grep rtl8821CU
 # 若 看到含有红色的rtl8821CU字样，则成功
 ```
 
-## 连接wifi
+## 使用nmcli连接wifi
 
 ```bash
 # 更新wifi 列表
 sudo nmcli device wifi list
 # 更新后按q退出
-# 连接到 Drones_5G
-sudo nmcli device wifi connect Drones_5G password 123456789
+# 连接到 XXXXXXX_5G
+sudo nmcli device wifi connect XXXXXXX_5G password 123456789
 # 成功后拔掉网线
 clash_ok
 # 返回 连接正常，则之后不再需要网线了。
 
-# 可以重复执行
 ```
 ifconfig 可以查看所有ip,找到 wifi的 ip,贴到电脑上

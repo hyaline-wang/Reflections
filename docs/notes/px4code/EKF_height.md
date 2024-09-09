@@ -5,11 +5,12 @@ permalink: /px4code/ti2v4oag/
 ---
 # EKF悬停油门估计器
 
-油门固件是一个典型的单变量EKF估计器，可以作为EKF的入门,如果还不了解EKF，可以查看[Kalman filter from the ground up](https://www.kalmanfilter.net/book.html)
+油门固件是一个典型的单变量EKF估计器，可以作为EKF的入门,如果还不了解EKF，可以查看[Kalman filter from the ground up](https://www.kalmanfilter.net/book.html)。
 
 ::: info 信息
-以Px4 v1.13.3为例，核心代码在 ==mc_hover_thrust_estimator==   ==zero_order_thrust_ekf== 中
+代码解析，以Px4 v1.13.3为例，核心代码在 ==mc_hover_thrust_estimator==   ==zero_order_thrust_ekf== 中
 :::
+
 
 ## 坐标设置
 对于ned坐标系，z轴方向向下，为了抵抗重力。imu的加速度中会存在一个，沿z轴向上的加速度,在end坐标系下为(0,0,-CONST_G)。

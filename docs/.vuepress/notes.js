@@ -17,13 +17,31 @@ const zhPx4CodeNote = defineNoteConfig({
 const zhRobotBaseNote = defineNoteConfig({
   dir: 'robot_base',
   link: '/robot_base',
-  sidebar: ['', 'mc_model','rigidbody_model'],
+  // sidebar: ['', 'mc_model','rigidbody_model'],
+  sidebar: 'auto',
+
+})
+
+
+const zhLinuxBaseNote = defineNoteConfig({
+  dir: 'linux_base',
+  link: '/linux_base',
+  // sidebar: ['', 'sougou_install','apache_qs'],
+  sidebar: 'auto'
+})
+
+const zhNormalHwBaseNote = defineNoteConfig({
+  dir: 'normal_hw',
+  link: '/normal_hw',
+  // sidebar: ['', 'vimedge2'],
+  sidebar: 'auto'
+
 })
 
 export const zhNotes = defineNotesConfig({
   dir: 'notes',
   link: '/',
-  notes: [zhDemoNote,zhPx4CodeNote,zhRobotBaseNote],
+  notes: [zhDemoNote,zhPx4CodeNote,zhRobotBaseNote,zhNormalHwBaseNote,zhLinuxBaseNote],
 })
 
 /* =================== locale: en-US ======================= */

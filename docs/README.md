@@ -10,13 +10,17 @@ config:
     background: tint-plate
     hero:
       name: Knowledge Base
-      tagline: Hyaline Document Test
+      tagline: Hyaline Notebook
       text: Px4飞控，机器人相关软件的使用指南及源码阅读心得
       actions:
         -
           theme: brand
+          text: 硬件文档
+          link: /normal_hw/
+        -
+          theme: brand
           text: Linux实践
-          link: /blog/
+          link: /linux_base/
         -
           theme: brand
           text: 机器人基础

@@ -4,18 +4,35 @@ createTime: 2024/09/07 00:42:11
 permalink: /robot_base/fnhcttex/
 ---
 
+## 什么是微分平坦(DFBC ,Differential-Flatness-Based Control)？
+
+设定 x 为系统状态，u 为系统输入(控制)
+
+一个微分平坦的动力系统必定存在一组由状态 x 和控制 u 的有限阶导数唯一决定的平坦输出（Flat Output）$z\in\mathbb{R}^m$  , 同时 x 和 u 也可以被该平坦输出及其有限阶 导数参数化
 
 
-High\_Level Control 为 位置控制。
+即一组平坦输出$z\in\mathbb{R}^m$，以及这组平坦输出的有限阶导数，通过一个变化(平坦变换)，可以得到
+
+:::info
+"Flat output" 是一个在控制系统和系统理论中常见的概念，特别是在非线性系统的研究中。它指的是将系统的输出（output）通过一些操作，使其能够被表示为输入（input）和系统状态（state）的函数，而不包含输出的导数或更高阶的导数。
+具体来说，**在一个动态系统中，如果系统的输出可以通过输入和状态的某种组合来表示，并且不包含输出的导数或更高阶导数，那么这个输出被称为"flat output"**。这种形式的输出对于系统建模、控制器设计和系统分析都非常有用。
+:::
+
+
+
+
+## uzh-rpg的 四旋翼模型
+
+- High Level Control
+- Low Level Control
+
+High Level Control 为 位置控制。
 
 <!-- # 微分平坦证明 -->
 
 > M. Faessler, A. Franchi, and D. Scaramuzza, “Differential flatness of quadrotor dynamics subject to rotor drag for accurate tracking of high-speed trajectories,” IEEE Robot. Autom.Lett., vol. 3, pp. 620–626,Apr. 2018.
 
 $$ \dot{\mathbf{v}} = -g\mathbf{z}\_w + c\mathbf{z}\_b - RDR^T\mathbf{v} $$
-
-ewwe
-
 
 由上式可**派生**出
 
@@ -24,9 +41,12 @@ $$ \begin{aligned} \mathbf{x\_B}^T(\dot{\mathbf{v}}+g\mathbf{z}\_w+d\_x\mathbf{v
 为了使用 reference heading， 我们 将 $\mathbf{X}\_B$ 投影到世界坐标系的平面上，与投影到世界坐标系的xy平面上，与X\_c$共线(collinear)
 
 
+## 参考源码
 
-# Omnidrones
-# Omnidrones
+Omnidrones，
+
+
+# 
 ## cf2x_pid
 emmmmm 这是没用用的东西,白看半天
 
@@ -261,16 +281,16 @@ void GazeboMotorModel::UpdateForcesAndMoments() {
 ```
 
 
-# 自己的动力学模型
+## 动力学模型
 
-## 一般模型
+## 一般模型(对于X模型)
 
 油门模型
 
 $$
 \begin{aligned}
-f(u) &= k_2^fu^2+k_1^fu+k_0^f \\\\\\
-\tau(u)&= k_2^{\tau}u^2+k_1^{\tau}u+k_0^{\tau} \\\\\\
+f(u) &= k_2^fu^2+k_1^fu+k_0^f \\
+\tau(u)&= k_2^{\tau}u^2+k_1^{\tau}u+k_0^{\tau} \\
 \end{aligned}
 $$
 
@@ -279,10 +299,10 @@ $$
 $$
 \begin{aligned}
 \boldsymbol{\eta} & =\left[\begin{array}{c}
-\frac{\sqrt{2}}{2} l\left(f_{1}-f_{2}-f_{3}+f_{4}\right) \\\\\\
-\frac{\sqrt{2}}{2} l\left(-f_{1}-f_{2}+f_{3}+f_{4}\right) \\\\\\
+\frac{\sqrt{2}}{2} l\left(f_{1}-f_{2}-f_{3}+f_{4}\right) \\
+\frac{\sqrt{2}}{2} l\left(-f_{1}-f_{2}+f_{3}+f_{4}\right) \\
 \kappa_{1} f_{1}-\kappa_{2} f_{2}+\kappa_{3} f_{3}-\kappa_{4} f_{4}
-\end{array}\right], \\\\\\
+\end{array}\right], \\
 m c & =f_{1}+f_{2}+f_{3}+f_{4},
 \end{aligned}
 $$
@@ -291,10 +311,10 @@ $$
 
 $$
 \begin{array}{l}
-\dot{\mathbf{p}}=\mathbf{v} \\\\\\
-\dot{\mathbf{v}}=-g \mathbf{z}_{\mathrm{w}}+c \mathbf{z}_{\mathrm{B}}-\mathbf{R D} \mathbf{R}^{\top} \mathbf{v} \\\\\\
-\dot{\mathbf{R}}=\mathbf{R} \hat{\boldsymbol{\omega}} \\\\\\
-\dot{\boldsymbol{\omega}}=\mathbf{J}^{-1}\left(\boldsymbol{\eta}-\boldsymbol{\omega} \times \mathbf{J} \boldsymbol{\omega}-\boldsymbol{\tau}_{\mathrm{g}}-\mathbf{A} \mathbf{R}^{\top} \mathbf{v}-\mathbf{B} \boldsymbol{\omega}\right) \\\\\\
+\dot{\mathbf{p}}=\mathbf{v} \\
+\dot{\mathbf{v}}=-g \mathbf{z}_{\mathrm{w}}+c \mathbf{z}_{\mathrm{B}}-\mathbf{R D} \mathbf{R}^{\top} \mathbf{v} \\
+\dot{\mathbf{R}}=\mathbf{R} \hat{\boldsymbol{\omega}} \\
+\dot{\boldsymbol{\omega}}=\mathbf{J}^{-1}\left(\boldsymbol{\eta}-\boldsymbol{\omega} \times \mathbf{J} \boldsymbol{\omega}-\boldsymbol{\tau}_{\mathrm{g}}-\mathbf{A} \mathbf{R}^{\top} \mathbf{v}-\mathbf{B} \boldsymbol{\omega}\right) \\
 \dot{\boldsymbol{\eta}}=\frac{1}{\alpha_{\mathrm{mot}}}\left(\boldsymbol{\eta}_{\mathrm{des}}-\boldsymbol{\eta}\right)
 \end{array}
 $$
@@ -316,9 +336,9 @@ $$
 
 $$
 \begin{aligned}
-\boldsymbol{\eta} & =\left[\begin{array}{c}\frac{\sqrt{2}}{2} l\left(f_{1}-f_{2}-f_{3}+f_{4}\right)\\\\\\
-\frac{\sqrt{2}}{2} l\left(-f_{1}-f_{2}+f_{3}+f_{4}\right) \\\\\\
-\kappa_{1} f_{1}-\kappa_{2} f_{2}+\kappa_{3} f_{3}-\kappa_{4} f_{4}\end{array}\right],\\\\\\
+\boldsymbol{\eta} & =\left[\begin{array}{c}\frac{\sqrt{2}}{2} l\left(f_{1}-f_{2}-f_{3}+f_{4}\right)\\
+\frac{\sqrt{2}}{2} l\left(-f_{1}-f_{2}+f_{3}+f_{4}\right) \\
+\kappa_{1} f_{1}-\kappa_{2} f_{2}+\kappa_{3} f_{3}-\kappa_{4} f_{4}\end{array}\right],\\
 m c & =f_{1}+f_{2}+f_{3}+f_{4},
 \end{aligned}
 $$
@@ -327,15 +347,16 @@ $$
 
 $$
 \begin{aligned}
-\dot{\mathbf{p}} &= \mathbf{v} \\\\\\
-\dot{\mathbf{v}} &= -g \mathbf{z}_{\mathrm{w}} + c \mathbf{z}_{\mathrm{B}}  \\\\\\
+\dot{\mathbf{p}} &= \mathbf{v} \\
+\dot{\mathbf{v}} &= -g \mathbf{z}_{\mathrm{w}} + c \mathbf{z}_{\mathrm{B}}  \\
 \end{aligned}
 $$
 
 
 
-# 参数
-transsThrust2GenForce
+# 构型与混控器矩阵
+
+\+ 型
 ```bash
 +
     1             x
@@ -347,14 +368,18 @@ transsThrust2GenForce
     2
 ```
 
-写法1
-```c++
-transsThrust2GenForce << 0, 0, length_, -length_,
-    -length_, length_, 0, 0,
-    dragCoeff_, dragCoeff_, -dragCoeff_, -dragCoeff_,
-    1, 1, 1, 1;
-```
-写法2
+$$
+\mathbf{M} = 
+\begin{bmatrix}
+0 & 0 & l & -l \\
+-l & l & 0 & 0 \\
+d & d & -d & -d \\
+t & t & t & t
+\end{bmatrix}
+$$
+
+
+X 型
 ```bash
 X
 1       2
@@ -364,10 +389,30 @@ X
 4       3      
 ```
 
+$$
+\mathbf{M} = 
+\begin{bmatrix}
+\sqrt{2}l & -\sqrt{2}l & -\sqrt{2}l & \sqrt{2}l \\
+-\sqrt{2}l & -\sqrt{2}l & \sqrt{2}l & \sqrt{2}l \\
+d & -d & d & -d \\
+t & t & t & t
+\end{bmatrix}
+$$
 
-```c++
-transsThrust2GenForce << length_, -length_, -length_, length_,
-    -length_, -length_, length_, length_,
-    dragCoeff_, -dragCoeff_, dragCoeff_, -dragCoeff_,
-    1, 1, 1, 1;
-```
+
+
+## uzh 动力学模型
+
+令 $\mathbf{\mu}$ 为机体坐标系下的 控制力矩。$\mathbf{\omega}$ 为四维向量，代表四个电机的旋转速度，且$\mathbf{\omega}>\mathbf{0}$ 。总推力为T，方向为$\mathbf{z}_b$，则
+
+$$
+\begin{bmatrix} \mathbf{\mu}_c\\T_c\end{bmatrix}=\mathbf{G}_1 \mathbf{\omega}_c^{\circ2}+\mathbf{G}_2 \mathbf{\dot{\omega}}
+$$
+
+其中$\mathbf{G}_2$代表直接由
+
+这里在绕$\mathbf{z}_b$方向旋转的力产生了两种，
+1. 来自于螺旋桨的力矩
+2. 来自于电机的力矩$G_2$,这个力矩是
+
+一般来说电机个惯性非常小，对于飞行器力矩的影响很少，所以经常被忽略

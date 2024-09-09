@@ -1,14 +1,13 @@
 ---
-title: apache_qc
+title: apache2快速开始
 createTime: 2024/09/07 01:08:09
 permalink: /linux_base/xw2lxlst/
 ---
-# 安装
+
+# apache2快速开始
 
 
-
-
-# 基本操作
+## 基本操作
 
 配置文件默认位于 `/etc/apache2`
 
@@ -44,7 +43,7 @@ permalink: /linux_base/xw2lxlst/
 
 
 
-# 文件夹美化
+## 文件夹美化
 
 
 
@@ -53,11 +52,11 @@ permalink: /linux_base/xw2lxlst/
 
 
 
-# With Gitlab
+## With Gitlab
 当gitlab使用本机安装， 使用默认端口30000 ，`/etc/apache2/sites-available/gitlab.conf`的配置如下
 
 
-## 假设在公网有一个域名
+### 假设在公网有一个域名
 ```xml
 <VirtualHost *:80>
   ServerName gitlab.qyswarm.top
@@ -70,7 +69,7 @@ permalink: /linux_base/xw2lxlst/
 
 以上设置可以避免出现**webIDE 打不开工程**  的情况
 
-## 没有域名
+### 没有域名
 
 ```
 external_url 'http://gitlab.qyswarm.top/'
@@ -83,7 +82,7 @@ nginx['listen_port'] = 40000
 # gitlab_pages['listen_proxy'] = "localhost:33441"
 ```
 
-## Gitlab webIDE 打不开 工程 
+### Gitlab webIDE 打不开 工程 
 [https://forum.gitlab.com/t/webide-wont-open/18680/20](https://forum.gitlab.com/t/webide-wont-open/18680/20)
 
 ```xml
