@@ -6,25 +6,37 @@ permalink: /robot_base/r8o5kgii/
 
 # 刚体动力学模型
 
-刚体动力学关键公式
+## 无约束刚体动力学(Unconstrained Rigid Body Dynamics)
 
-对于平移 
+### 牛顿-欧拉公式(Newton-Euler equation)
 
-$$
-F=ma
-$$
-
-对于旋转(欧拉公式)---[[欧拉方程的推导]]
-
-对于旋转
+在经典力学中，牛顿-欧拉方程描述了刚体的平移和旋转动力学[^wiki_newton_euler]
 
 $$
-N=I \cdot \dot{\omega} + \omega \times(I \cdot \omega)
+\begin{aligned}
+F&=ma\\
+\tau &=\mathbf{I} \cdot \dot{\omega} + \omega \times(I \cdot \omega)
+\end{aligned}
 $$
-这个公式分两个部分
+
+:::info
+
+- F: 作用在质心上的总力
+- $\tau$: 作用于质心的总扭矩
+
+- $m$: 是刚体的质量
+- $\mathbf{I}$: $3 \times 3$ 的 惯性矩阵
+- $\dot{\omega}$: 刚体的角加速度(angular acceleration)，
+
+
+其中
 - $I \cdot \dot{\omega}$ 描述了合外力矩
 - $\omega \times(I \cdot \omega)$ 描述了惯性力
 
-:::info
-公式可参考[欧拉方程的推导](./math_base.md#欧拉方程的推导)
+公式推导参考[欧拉方程的推导](./math_base.md#欧拉方程的推导)
 :::
+
+
+
+
+[^wiki_newton_euler]:https://en.wikipedia.org/wiki/Newton%E2%80%93Euler_equations

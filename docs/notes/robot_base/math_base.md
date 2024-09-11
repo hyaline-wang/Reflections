@@ -7,7 +7,6 @@ permalink: /robot_base/hurywudg/
 # math_base
 ## 点积（Dot product）的性质
 
-<!-- ![[Pasted image 20240902213204.png]] -->
 $$
 \vec{a} \cdot \vec{a} = |\vec{a}||\vec{b}|\cos{\theta}
 $$
@@ -29,7 +28,6 @@ $$
 - 计算两个向量的旋转轴 n
 
 ## 四元数
-### Eigen
 
 :::warning
 注意 ==Eigen::quaternion== 有两种初始化方式，
@@ -41,12 +39,12 @@ $$
 
 A quaternion is in "canonical form" **when its first element is nonnegative**.
 **当四元数的第一个元素(w)为非负时，四元数处于“规范形式”**。
-## 求逆
+### 求逆
 $$
-\mathbf{q}^{−1} = \mathbf{q}^* = ( q_0, -q_1, −q2, −q3_ )
+\mathbf{q}^{−1}=\mathbf{q}^*=(q_0, -q_1, −q2, −q3_)
 $$
 
-## 乘法
+### 乘法
 
 先执行 $\mathbf{q}_0$ ，在执行 $\mathbf{q}_1$ ，可用乘法表示，实现如下
 
@@ -64,9 +62,9 @@ def quaternion_multiply(quaternion0, quaternion1,quat_order="xyzw"):
 	x1 * y0 - y1 * x0 + z1 * w0 + w1 * z0], dtype=np.float64)# wxyz
 ```
 
-## Half-Way Vector Solution 
+### Half-Way Vector Solution 
 
-## Half-Way Quaternion Solution[^Half-Way_Quaternion_Solution_Ref]
+### Half-Way Quaternion Solution[^Half-Way_Quaternion_Solution_Ref]
 
 
 
@@ -159,8 +157,8 @@ q.normalize(); //return
 
 首先明确两个参考系：
 
-- 空间系（space frame）: 一个被固定在空间中的惯性系$S_0$。
-- 物理系（body frame）：一个被固定在转动的刚体上的，自身会转动的非惯性系$S$。
+- 空间系（space frame）: 一个被固定在空间中的惯性系 $S_0$ 。
+- 物理系（body frame）：一个被固定在转动的刚体上的，自身会转动的非惯性系 $S$ 。
 
 ### 推导
 
@@ -199,5 +197,43 @@ $$
 
 
 
+## 函数有唯一极值点的条件
+
+### 对于一元函数
+
+对于一个一元函数$f(x)$，唯一极值点的条件主要涉及一阶导数和二阶导数。
+
+**局部极值点的判定**
+
+条件一：==必要条件== 在$x_0$处的一阶导为0即($f^{''}(x)=0$)或一阶导不存在。
+
+条件二：二阶导数判定
+- 如果函数的二阶导数 $f^{''}(x)$ 在某点$x_0$处是正的,即$f^{''}(x)>0$,则$x_0$是一个局部极小值点。
+- 如果函数的二阶导数 $f^{''}(x)<0$,则$x_0$是一个局部极大值点。
+- 如果 $f^{''}(x)=0$，则需要进一步分析更高阶导数。
+
+**唯一极值点的条件**
+
+**函数的单峰性**：函数具有唯一的极大值或极小值，通常表现为单调递增到一个点后变为单调递减（或相反），这种性质通常与函数的凸性或凹性有关。
+- 如果函数是严格凸的，即 $f^{''}(x)>0$ 对于所有 $x\in\mathbb{R}$,则函数只有一个极小值点。
+- 如果函数是严格凹的，即 $f^{''}(x)<0$ 对于所有 $x\in\mathbb{R}$,则函数只有一个极大值点。
+
+### 对于多元函数
+
+**局部极值点的判定**
+
+条件一：==必要条件== 梯度向量为0。
+条件二: Hessian 矩阵判断法,通过Hessian矩阵的正定性或者负定性判定:
+- 如果 Hessian 矩阵在某点正定，则该点是局部极小值点。
+- 如果 Hessian 矩阵在某点负定，则该点是局部极大值点。
+- 如果 Hessian 矩阵既非正定也非负定，可能存在鞍点。
+
+**唯一极值点的条件**
+- 严格凸性：如果函数 $f(x_1,x_2,...,x_n)$ 是严格凸的（即 Hessian 矩阵在定义域内正定），则该函数只有一个全局极小值点。
+- 严格凹性：如果函数是严格凹的（即 Hessian 矩阵在定义域内负定），则该函数只有一个全局极大值点。
+
+::: tip
+在优化问题中，通常需要求极小值，例如在QP问题中，需要保证 Hessian 矩阵是一个正定矩阵。（正定矩阵首先是对称的）
+:::
 
 [^Half-Way_Quaternion_Solution_Ref]: https://stackoverflow.com/questions/1171849/finding-quaternion-representing-the-rotation-from-one-vector-to-another
