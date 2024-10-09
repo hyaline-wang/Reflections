@@ -12,18 +12,20 @@ tags:
 ## 多版本Opencv 
 
 :::warning
-以3.4.18为例，比较老，是ubuntu18时用的
+以3.4.18为例，比较老，是ubuntu18时用的,
+- 对于 Jetson设备可以通过`jtop`，查看CUDA_ARCH_BIN
 :::
 
 ```bash
 wget https://codeload.github.com/opencv/opencv/zip/refs/tags/3.4.18 -O opencv3-4-18.zip
+wget https://github.com/opencv/opencv/archive/refs/tags/4.5.5.zip -O opencv4-5-5.zip
 unzip opencv3-4-18.zip
 cd opencv-3.4.18/
 mkdir build && cd build
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
         -D CMAKE_INSTALL_PREFIX=/usr/local \
         -D WITH_CUDA=ON \
-        -D CUDA_ARCH_BIN=7.2 \
+        -D CUDA_ARCH_BIN=8.7 \
         -D CUDA_ARCH_PTX="" \
         -D ENABLE_FAST_MATH=ON \
         -D CUDA_FAST_MATH=ON \

@@ -92,6 +92,9 @@ sudo apt install nvidia-jetpack
   其中，默认安装的
   OpenCV: 4.5.4 with CUDA: NO
 
+
+
+
 ## [Jtop](https://rnext.it/jetson_stats/) 安装
 
 ```bash
@@ -203,10 +206,43 @@ realsense提供了[jetson的安装教程](https://dev.intelrealsense.com/docs/nv
 sudo apt install ros-noetic-realsense2-camera*
 ```
 
+## opencv 版本冲突
+
+JetPack 5.1.3 includes ==OpenCV 4.5.4==，而ros-desktop-full 依赖于 OpenCV 4.2.0 (是从ros的源里下载的)，这导致了==版本冲突==。由于apt安装，opencv的包名是完全相同的，即都叫`libopencv`。
+### 现象
+会导致编译vins时报警告
+```bash
+/usr/bin/ld: warning: libopencv_video.so.4.2, needed by /home/nvidia/ego_planner_v1_all_in_one/devel/lib/libvins_lib.so, may conflict with libopencv_video.so.4.5 /usr/bin/ld: warning: libopencv_core.so.4.2, needed by /home/nvidia/ego_planner_v1_all_in_one/devel/lib/libvins_lib.so, may conflict with libopencv_core.so.4.5 /usr/bin/ld: warning: libopencv_imgcodecs.so.4.5, needed by /home/nvidia/ego_planner_v1_all_in_one/devel/lib/libvins_lib.so, may conflict with libopencv_imgcodecs.so.4.2 /usr/bin/ld: warning: libopencv_objdetect.so.4.2, needed by /usr/lib/aarch64-linux-gnu/libopencv_face.so.4.2.0, may conflict with libopencv_objdetect.so.4.5
+```
+以及运行时报错
+```bash
+terminate called after throwing an instance of 'cv::Exception'
+  what():  OpenCV(4.5.4) /home/ubuntu/build_opencv/opencv/modules/core/src/alloc.cpp:73: error: (-4:Insufficient memory) Failed to allocate 419969809033920 bytes in function 'OutOfMemoryError'
+
+```
+### 解决方案
+这里提供一个安装顺序
+```bash
+apt update
+apt install jetpack
+# 1.安装结束后，注释掉jetson的源
+apt update
+apt remove libopencv*
+
+apt install libopencv-dev
+apt install ros-noetic-desktop-full
+```
+### 分析一下opencv的目录 arm
+
+当使用apt安装时
+- .so: `/usr/lib/aarch64-linux-gnu`
+- include: `/usr/include/opencv4`
+- cmake: `/usr/lib/aarch64-linux-gnu/cmake/opencv4/`
+- pkg-config: `/usr/lib/aarch64-linux-gnu/pkgconfig/opencv4.pc`
 
 
 
-# 查看驱动
+## 查看驱动
 
 lsmod 可以查看所有驱动
  - iwlwifi: AX210驱动
@@ -215,10 +251,15 @@ lsmod 可以查看所有驱动
 通过 lspci -k，可以看到pci设备具体使用了哪个驱动
 通过lsusb -t，可以看到 usb设备具体使用哪个驱动
 
+## 固件烧写
 
+:::warning TODO
+等待补全
+:::
+### SDK Manager
 
+### 手动烧写
 
-# 非nvidia sdkmanager 刷固件
 
 Jetpack 5.1.3
 
@@ -228,67 +269,9 @@ Jetpack 5.1.3
 1. 下载[Driver Package (BSP)](https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v5.0/release/jetson_linux_r35.5.0_aarch64.tbz2)
 2. 
 
-
-# 命令行烧写镜像
-
+==命令行烧写镜像==
 
 https://developer.nvidia.com/embedded/jetson-linux-archive
 
 
 https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/text/IN/QuickStart.html#to-flash-jetson-developer-kit-operating-software 
-
-
-# 修改用户名
-
-
-## opencv 版本冲突
-
-由于apt安装，包名似乎是完全相同的
-
-
-```bash
-/usr/bin/ld: warning: libopencv_video.so.4.2, needed by /home/nvidia/ego_planner_v1_all_in_one/devel/lib/libvins_lib.so, may conflict with libopencv_video.so.4.5 /usr/bin/ld: warning: libopencv_core.so.4.2, needed by /home/nvidia/ego_planner_v1_all_in_one/devel/lib/libvins_lib.so, may conflict with libopencv_core.so.4.5 /usr/bin/ld: warning: libopencv_imgcodecs.so.4.5, needed by /home/nvidia/ego_planner_v1_all_in_one/devel/lib/libvins_lib.so, may conflict with libopencv_imgcodecs.so.4.2 /usr/bin/ld: warning: libopencv_objdetect.so.4.2, needed by /usr/lib/aarch64-linux-gnu/libopencv_face.so.4.2.0, may conflict with libopencv_objdetect.so.4.5
-```
-> 确认一下 是不是cv_bridge的锅
-
-```
-|**JetPack 5.1.3 includes OpenCV 4.5.4**|
-
-ros 安装了 OpenCV 4.2.0
-版本冲突 可能是个隐患
--- Found OpenCV: /usr (found suitable version "4.5.4", minimum required is "4.2.0") 
-
-```
-
-
-## 分析一下opencv的目录 arm
-
-
-```bash
-# lib
-/usr/lib/aarch64-linux-gnu
-ls | grep opencv
-# 可以发现有很多 4.2 的库 4.5 的
-
-# inc
-# /usr/include/opencv4
-
-# pkg-config
-# /usr/lib/aarch64-linux-gnu/pkgconfig/opencv4.pc
-
-# cmake
-# ls /usr/lib/aarch64-linux-gnu/cmake/opencv4/
-```
-
-
-## QGC安装
-qgc依赖
-```bash
-sudo usermod -a -G dialout $USER
-sudo apt-get remove modemmanager -y
-sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y
-sudo apt install libfuse2 -y
-sudo apt install libxcb-xinerama0 libxkbcommon-x11-0 libxcb-cursor-dev -y
-```
-
-QGC 版本 V4.2.2 感觉还好

@@ -22,7 +22,7 @@ export default defineThemeConfig({
       profile: {
         avatar: 'https://theme-plume.vuejs.press/plume.png',
         name: 'knowledge base',
-        description: '机器人,px4飞控设计使用心得',
+        description: '个人博客，整理的笔记',
         // circle: true,
         // location: '',
         // organization: '',
