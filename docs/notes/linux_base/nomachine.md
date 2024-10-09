@@ -4,6 +4,9 @@ createTime: 2024/09/09 13:22:12
 permalink: /linux_base/4u4llyja/
 ---
 
+## 性能占用
+
+注意这样会增加CPU占用，在 i7-1145g 和 i5-1135g ，i5-1240p 中测试影响不大，但是在Xavier NX 中还是有一些影响(每一家的板子感觉性能时有一些区别的)
 
 ## 安装
 
@@ -21,7 +24,7 @@ reboot
 这样会有一些隐患，当你正常使用HDMI时，会发现没有图形界面了。
 不过不用担心，若之后不用nomachine 了你可以使用
 ```bash
-systemctl set-defaultgraphical.targe  
+systemctl set-default graphical.target  
 ```
 然后重启即可恢复要是之后还用，可以使用
 ```bash
@@ -29,7 +32,7 @@ systemctl isolate graphical.target
 ```
 临时解决问题。
 
-注意这样会增加CPU占用，在 i7-1145g 和 i5-1135g ，i5-1240p 中测试影响不大，但是在Xavier NX 中还是有一些影响(每一家的板子感觉性能时有一些区别的)
+
 
 
 ## 权限问题
