@@ -5,7 +5,8 @@ config:
   -
     type: banner
     full: true
-    banner: https://api.pengzhanbo.cn/wallpaper/bing
+    banner: https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hao_image/wall_paper/wallhaven-rrl1kj_1920x1200.png
+    # banner: https://api.pengzhanbo.cn/wallpaper/bing
 
     background: tint-plate
     hero:

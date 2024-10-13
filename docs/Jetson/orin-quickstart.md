@@ -53,12 +53,19 @@ https://forums.developer.nvidia.com/t/coneection-problems/179380/6
 
 ## Nvdia 环境初始化
 
-> 以工控中国提供的初始ubuntu20.04镜像为例，没有安装Jetpack，openssh-server等
+> 以r35.5版本的ubuntu20.04镜像为例
 
 - version : r35.5
-- jetpack 5.1.3
 - ubuntu20.04
 - linux kernel 5.10
+- jetpack 5.1.3
+
+
+可以考虑先[换源](#apt)
+```bash
+sudo apt update
+sudo apt install htop curl openssh-server
+```
 
 ## 换源
 ### APT
@@ -231,6 +238,9 @@ apt remove libopencv*
 
 apt install libopencv-dev
 apt install ros-noetic-desktop-full
+
+# 先前删除的时候realsense也会被删除
+# apt install ros-noetic-realsense2_camera
 ```
 ### 分析一下opencv的目录 arm
 
