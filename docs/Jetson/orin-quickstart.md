@@ -51,15 +51,57 @@ https://forums.developer.nvidia.com/t/coneection-problems/179380/6
 以下为配置过程
 :::
 
-## Nvdia 环境初始化
+## Nvdia 环境参数
 
-> 以r35.5版本的ubuntu20.04镜像为例
-
+使用的环境版本信息为
 - version : r35.5
 - ubuntu20.04
 - linux kernel 5.10
 - jetpack 5.1.3
 
+## 固件烧写
+
+:::warning TODO
+等待补全
+:::
+### SDK Manager
+
+:::info 
+以烧录 jetpack 5.1.3 版本为例
+:::
+
+#### 准备
+
+- 一根usb3.0 type-a 到type-c
+- 12V 3A 电源线
+
+#### Flash 流程
+
+- 打开SDK Manager
+- 将usb线连接至主机和jetson设备
+- 通电前按住 Recoverey
+- 通电
+- 等待识别到Jetson设备
+
+### 手动烧写
+
+
+Jetpack 5.1.3
+
+[Jetson Linux | NVIDIA Developer](https://developer.nvidia.com/embedded/jetson-linux-r3550)
+
+
+1. 下载[Driver Package (BSP)](https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v5.0/release/jetson_linux_r35.5.0_aarch64.tbz2)
+2. 
+
+==命令行烧写镜像==
+
+https://developer.nvidia.com/embedded/jetson-linux-archive
+
+
+https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/text/IN/QuickStart.html#to-flash-jetson-developer-kit-operating-software 
+
+## 开始配置
 
 可以考虑先[换源](#apt)
 ```bash
@@ -261,27 +303,3 @@ lsmod 可以查看所有驱动
 通过 lspci -k，可以看到pci设备具体使用了哪个驱动
 通过lsusb -t，可以看到 usb设备具体使用哪个驱动
 
-## 固件烧写
-
-:::warning TODO
-等待补全
-:::
-### SDK Manager
-
-### 手动烧写
-
-
-Jetpack 5.1.3
-
-[Jetson Linux | NVIDIA Developer](https://developer.nvidia.com/embedded/jetson-linux-r3550)
-
-
-1. 下载[Driver Package (BSP)](https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v5.0/release/jetson_linux_r35.5.0_aarch64.tbz2)
-2. 
-
-==命令行烧写镜像==
-
-https://developer.nvidia.com/embedded/jetson-linux-archive
-
-
-https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/text/IN/QuickStart.html#to-flash-jetson-developer-kit-operating-software 

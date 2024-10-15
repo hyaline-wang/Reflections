@@ -27,13 +27,24 @@ ubuntu_base 就是一个rootfs，一个全量版的大小为5
 
 ## 系统启动流程
 
-1. 加载内核 ，存储的时候是被压缩的状态吗？
-2. /sbin/init
-     1. 这是一个非内核进程，PID总是1
-     2. /etc/inittab
-     3. /etc/rc.d/rc.sysinit
-3. 从 /etc/modules.conf 或者 /etc/modules.d 目录下 装载内核模块
-4. 
+:::info
+1. Linux 内核在存储时通常是==以压缩状态存在==的。具体来说，内核镜像文件（通常称为 bzImage）是经过压缩的，以便减少其占用的磁盘空间并加快加载速度。压缩后的内核会在系统启动时由引导程序加载到内存，然后进行解压缩并运行。
+:::
+
+
+
+==内核阶段==
+1. 加载内核:引导程序（如 GRUB）加载内核镜像（kernel），内核启动并开始初始化硬件。
+
+==initramfs/initrd 阶段==
+
+
+==init==
+2. `/sbin/init`,第一个用户空间进程（非内核进程）,PID是1，用于初始化和配置用户空间环境。
+     1. /etc/inittab
+     2. /etc/rc.d/rc.sysinit
+3. 在传统的 SysV init 系统中，内核模块加载可以通过 `/etc/modules.conf` 文件（或 `/etc/modules.d` ）来指定，系统会按照这些配置文件中的指示加载内核模块。
+4. SYStemd
 
 :::caution
 文件系统到底提供了什么功能
@@ -43,8 +54,8 @@ ubuntu_base 就是一个rootfs，一个全量版的大小为5
 
 :::info 
 本节中生成的镜像包含两个部分
-- 
--
+- `kernel`编译出的`bzImage`
+- `busybox`编译出的`initramfs-busybox-x86.cpio.gz`
 :::
 
 
@@ -111,18 +122,21 @@ qemu-system-x86_64 \
 -enable-kvm
 ```
 
+`-enable-kvm` 是 QEMU 的命令行参数之一，用于启用 KVM（Kernel-based Virtual Machine）加速技术。它的作用是让 QEMU 使用主机系统的 KVM 模块来加速虚拟机的执行。
 
-什么是KVM, 虚拟机
 
-
-对于busybox 1.24.2 ， 在 ubuntu22.04上编译报没有rpc/rpc.h， 1.36.1没有这个问题
+对于busybox 1.24.2,在 ubuntu22.04上编译报没有rpc/rpc.h， 1.36.1没有这个问题
 
 ```bash
 networking/inetd.c:178:11: fatal error: rpc/rpc.h: No such file or directory
           32 | #include <rpc/rpc.h>
 ```
 
+## ubuntu core
 
+
+
+## 参考资料
 https://gist.github.com/ncmiller/d61348b27cb17debd2a6c20966409e86
 
 https://developer.nvidia.com/embedded/jetpack
