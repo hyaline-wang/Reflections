@@ -7,6 +7,7 @@ import { enNotes, zhNotes } from './notes'
  */
 export default defineThemeConfig({
   logo: 'https://theme-plume.vuejs.press/plume.png',
+  base: '/Knowledge-Base/',
   // your git repo url
   docsRepo: '',
   docsDir: 'docs',

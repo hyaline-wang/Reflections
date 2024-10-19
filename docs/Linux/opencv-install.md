@@ -107,7 +107,7 @@ set(OpenCV_DIR /usr/local/share/OpenCV)
 ### 版本对应
 
 
-## 多版本cv_bridge
+## 多版本cv-bridge
 
 
 

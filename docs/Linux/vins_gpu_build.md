@@ -12,7 +12,7 @@ permalink: /article/0y4guace/
 :::
 
 - Opencv:安装请参考[多版本Opencv安装](opencv-install.md#编译with-cuda)
-- cv_bridge:安装请参考[多版本cv_bridge安装](./opencv-install.md#多版本cv_bridge)
+- cv_bridge:安装请参考[多版本cv_bridge安装](opencv-install.md#多版本cv-bridge)
 
 ## vins_gpus
 
@@ -27,5 +27,9 @@ git clone https://github.com/pjrambo/VINS-Fusion-gpu.git
 # 回到catkin_ws
 catkin_make
 
+```
+
+```jsx live
+<Button>I'm transparent!</Button>
 ```
 
