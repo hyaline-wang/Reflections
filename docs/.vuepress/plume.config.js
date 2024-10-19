@@ -6,7 +6,7 @@ import { enNotes, zhNotes } from './notes'
  * @see https://theme-plume.vuejs.press/config/basic/
  */
 export default defineThemeConfig({
-  logo: 'https://theme-plume.vuejs.press/plume.png',
+  logo: 'notebook.svg',
   base: '/Knowledge-Base/',
   // your git repo url
   docsRepo: '',
@@ -21,12 +21,12 @@ export default defineThemeConfig({
   locales: {
     '/': {
       profile: {
-        avatar: 'https://theme-plume.vuejs.press/plume.png',
+        avatar: 'notebook.svg',
         name: 'Reflections of Hyaline',
         description: '个人博客，整理的笔记',
         // circle: true,
         // location: '',
-        // organization: '',
+        organization: '大连理工大学',
       },
 
       navbar: zhNavbar,

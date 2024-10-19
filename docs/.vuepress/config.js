@@ -7,12 +7,12 @@ export default defineUserConfig({
   lang: 'zh-CN',
   locales: {
     '/': {
-      title: 'knowledge base',
+      title: 'Reflections of Hyaline',
       lang: 'zh-CN',
       description: '机器人,px4飞控设计使用心得',
     },
     '/en/': {
-      title: 'knowledge base',
+      title: 'Reflections of Hyaline',
       lang: 'en-US',
       description: '机器人,px4飞控设计使用心得',
     },
