@@ -1,11 +1,25 @@
-import { defineNoteConfig, defineNotesConfig } from 'vuepress-theme-plume'
+import { defineNoteConfig, defineNotesConfig, } from 'vuepress-theme-plume'
 
 /* =================== locale: zh-CN ======================= */
 
 const zhDemoNote = defineNoteConfig({
   dir: 'demo',
   link: '/demo',
-  sidebar: ['', 'foo', 'bar'],
+  // sidebar: ['', 'foo', 'bar'],
+  sidebar: 'auto',
+  // sidebar: [
+  //   { text: 'X152b', collapsed: true, items: [
+  //     { text: 'foo', link: 'foo' },
+  //     { text: 'bar', link: 'bar' },
+  //   ] },
+  //   { text: 'X190g', collapsed: true, items: [
+  //     { text: 'foo', link: 'foo' },
+  //     { text: 'bar', link: 'bar' },
+  //   ] },
+  //   { text: 'X255c',  link: '/ppx', collapsed: true, items: 'auto',},
+  //   // { text: '介绍', link: 'foo' },
+  //   // { text: '使用', link: 'bar' },
+  // ]
 })
 
 const zhPx4CodeNote = defineNoteConfig({
@@ -17,8 +31,8 @@ const zhPx4CodeNote = defineNoteConfig({
 const zhRobotBaseNote = defineNoteConfig({
   dir: 'robot_base',
   link: '/robot_base',
-  // sidebar: ['', 'mc_model','rigidbody_model'],
-  sidebar: 'auto',
+  sidebar: ['', 'mc_model','rigidbody_model'],
+
 
 })
 
