@@ -14,15 +14,15 @@ export default defineThemeConfig({
 
   appearance: true,
 
-  social: [
-    { icon: 'github', link: '/' },
-  ],
+  // social: [
+  //   { icon: 'github', link: '/' },
+  // ],
 
   locales: {
     '/': {
       profile: {
         avatar: 'https://theme-plume.vuejs.press/plume.png',
-        name: 'knowledge base',
+        name: 'Reflections of Hyaline',
         description: '个人博客，整理的笔记',
         // circle: true,
         // location: '',
