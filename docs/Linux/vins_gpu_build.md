@@ -1,5 +1,5 @@
 ---
-title: vins_gpu_build
+title: Vins_GPU  构建
 createTime: 2024/10/15 13:38:28
 permalink: /article/0y4guace/
 ---
@@ -29,7 +29,4 @@ catkin_make
 
 ```
 
-```jsx live
-<Button>I'm transparent!</Button>
-```
 

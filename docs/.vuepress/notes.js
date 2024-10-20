@@ -25,7 +25,8 @@ const zhDemoNote = defineNoteConfig({
 const zhPx4CodeNote = defineNoteConfig({
   dir: 'px4code',
   link: '/px4code',
-  sidebar: ['', 'atti_control', 'EKF_height','px4_mode','firmware_change','mc_mixer'],
+  sidebar: 'auto',
+  // sidebar: ['', 'atti_control', 'EKF_height','px4_mode','firmware_change','mc_mixer'],
 })
 
 const zhRobotBaseNote = defineNoteConfig({
