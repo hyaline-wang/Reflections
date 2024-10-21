@@ -1,5 +1,5 @@
 ---
-title: ffmpeg_with_rk3588
+title: rk3588使用ffmpeg
 createTime: 2024/09/09 16:43:45
 permalink: /normal_hw/hff0uxj1/
 ---

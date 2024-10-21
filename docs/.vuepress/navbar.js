@@ -7,12 +7,11 @@ export const zhNavbar = defineNavbarConfig([
   // { text: '归档', link: '/blog/archives/' },
   {
     text: '笔记',
-    items: [{ text: '示例', link: '/notes/demo/README.md' },
+    items: [
       { text: 'px4源码解析', link: '/notes/px4code/README.md' },
       { text: 'linux基础', link: '/notes/linux_base/README.md' },
-
       { text: '机器人基础', link: '/notes/robot_base/README.md' },
-      { text: '硬件文档', link: '/notes/normal_hw/vimedge2.md' }
+      { text: '硬件文档', link: '/notes/normal_hw/机载传感器/rtk.md' }
 
     ]
   },

@@ -10,6 +10,11 @@ permalink: /s26d5kdj/
 <LinkCard title="1.13 参数表" href="https://docs.px4.io/v1.13/en/advanced_config/parameter_reference.html" description="" />
 <LinkCard title="1.15 参数表" href="https://docs.px4.io/v1.15/en/advanced_config/parameter_reference.html" description="" />
 
+
+## 重置参数
+
+![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/px4/image_20241021130452.png)
+
 ## 常用配置
 
 ::: tabs
@@ -23,9 +28,13 @@ permalink: /s26d5kdj/
     EKF2_GPS_NOISE 0.5 -> 0.1
     ```
 1. 使用TF mini
-    - 插线
-    - 修改 ->  SENS_TFMINI_CFG
-    - 查看是否有DISTANCE
+    - 插入串口
+    - 修改参数查看是否有DISTANCE
+    
+    | 参数  | 开启 | 关闭 |
+    |------|--------|-------|
+    | SYS_HAS_MAG | 选择对应的口 | Disabled|
+    
 
 1. 禁用磁罗盘
     > 一些飞控没有罗盘，但是在选机架之后，EKF2_MAG_TYPE 会被重置，导致电机不转，你可以选择屏蔽罗盘
@@ -35,22 +44,34 @@ permalink: /s26d5kdj/
     ```
 
 @tab V1.15
-1. 禁用磁罗盘
-    ```
-    SYS_HAS_MAG Disabled
-    EKF2_MAG_TYPE None
-    ```
-1. 使用Vision_pose
-    ```
-    EKF2_EV_ENABLE
-    EKF2_DELAY 50 
-    ```
+1. 磁罗盘 开启|禁用
+    > - 一些室内环境的磁场比较混乱，可以关闭磁罗盘
+    > - 当使用GPS时磁罗盘必须开启 
+
+    | 参数  | 开启 | 关闭 |
+    |------|--------|-------|
+    | SYS_HAS_MAG | Enable | Disabled|
+    | EKF2_MAG_TYPE | Automatic | None|
+
+1. 使用`Vision_pose`
+    > 以使用VINS的数据作为`vision_pose`数据为例
+
+    | 参数  | 开启 | 关闭 |
+    |------|--------|-------|
+    | EKF2_EV_ENABLE | Enable | Disabled|
+    | EKF2_EV_DELAY  | 50     |         |
+
 1. 气压计
-    > 从1.14开始，EKF支持屏蔽掉气压计
-    ```
-    EKF2_BRAO_CTRL Disable
-    ```
+    > 从1.14开始，EKF支持屏蔽掉气压计,紧凑型的小飞机往往会导致气压计不可用，通过监看数据确定桨转和气压机数据之间有没有关系即可确定气压计工作是否正常，正常的气压计精度在+-0.5m左右。
+
+    | 参数  | 开启 | 关闭 |
+    |------|--------|-------|
+    | EKF2_BRAO_CTRL | Enable | Disabled|
 :::
+
+
+## 刷完默认固件后的操作
+
 
 ## 奇怪的参数
 - COM_THROW_EN 允许通过将车辆扔到空中来启动车辆。
