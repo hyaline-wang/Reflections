@@ -58,8 +58,25 @@ permalink: /s26d5kdj/
 
     | 参数  | 开启 | 关闭 |
     |------|--------|-------|
-    | EKF2_EV_ENABLE | Enable | Disabled|
-    | EKF2_EV_DELAY  | 50     |         |
+    | EKF2_EV_CTRL | 11 | 0|
+    | EKF2_EV_DELAY  | 50 ms     |         |
+    | EKF2_EVP_NOISE  | 0.03     |         |
+    | EKF2_EVP_GATE  | 25     |         |
+    | EKF2_EVV_NOISE  | 0.03     |         |
+    | EKF2_EVV_GATE  | 10     |         |
+
+
+1. EKF 高度
+
+    | 参数  | 开启 | 关闭 |
+    |------|--------|-------|
+    | EKF2_HGT_REF | Vision | |
+
+1. EKF GPS 
+
+    | 参数  | 开启 | 关闭 |
+    |------|--------|-------|
+    | EKF2_GPS_CTRL | 7 | 0 |
 
 1. 气压计
     > 从1.14开始，EKF支持屏蔽掉气压计,紧凑型的小飞机往往会导致气压计不可用，通过监看数据确定桨转和气压机数据之间有没有关系即可确定气压计工作是否正常，正常的气压计精度在+-0.5m左右。
