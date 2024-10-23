@@ -79,12 +79,16 @@ systemctl restart dnsmasq
 请注意 x86和arm架构cpu的换源方法是不同的
 
 ## Dump 与 Write 
-## 准备
+### 准备
 1. 在通电前，插入U盘，用usb线连接电脑
+
     ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022210357.png)
+
 2. 通电，然后按住Function键并短按reset键进入 oowow
 3. 在浏览器中使用 http://172.22.1.1/x/control  进入控制界面
+
     ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022233636.png) 
+    
 4. 现在你可以选择Dump镜像或者Write镜像。   
 ### Dump镜像
 

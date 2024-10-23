@@ -11,7 +11,7 @@ permalink: /article/27023b50/
 
 :::info
 - 供电：以下过程的供电，都以PD充电器供电为例，功率大于30w，华为的不能用
-- 权限: 以下操作基本都需要root权限。
+- 权限: 以下操作大部分需要root权限。
 :::
 
 :::: steps
@@ -19,8 +19,8 @@ permalink: /article/27023b50/
     <LinkCard title="镜像" href="http://110.42.45.189:18080/Edge2/2024-10-23/" description="更新日期:2024-10-23" />
     1. 准备u盘，确保格式为exfat，若不是请格式化成exfat
     1. 下载镜像，并放到U盘中
-2. 烧录固件。（USB 有线刷固件）
-
+2. 烧录固件。（Write）
+    <LinkCard title="USB 有线刷固件" href="/article/1zbyaj5c/#dump-%E4%B8%8E-write" description="请看Write" />
 3. 使用pd充电器向供电口供电 
 4. 连接usb至edge2 的OTG口 （现在X152b会自动获取ip，无需手动设置）
 5. 重置主机名
