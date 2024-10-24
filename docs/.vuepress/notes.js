@@ -53,10 +53,19 @@ const zhNormalHwBaseNote = defineNoteConfig({
 
 })
 
+const zhEasyServerManageNote = defineNoteConfig({
+  dir: 'easy_server_manage',
+  link: '/easy_server_manage',
+  // sidebar: ['', 'vimedge2'],
+  sidebar: 'auto'
+
+})
+
+
 export const zhNotes = defineNotesConfig({
   dir: 'notes',
   link: '/',
-  notes: [zhPx4CodeNote,zhRobotBaseNote,zhNormalHwBaseNote,zhLinuxBaseNote],
+  notes: [zhPx4CodeNote,zhRobotBaseNote,zhNormalHwBaseNote,zhLinuxBaseNote,zhEasyServerManageNote],
 })
 
 /* =================== locale: en-US ======================= */
