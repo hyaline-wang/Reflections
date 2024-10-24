@@ -1,7 +1,7 @@
 ---
 title: X152b_connect
 createTime: 2024/10/23 20:04:31
-permalink: /article/zfxyfnb2/
+permalink: /production_doc/zfxyfnb2/
 ---
 
 ## 连接至飞行器机载电脑
