@@ -1,7 +1,7 @@
 ---
 title: X152b PC 生产初始化
 createTime: 2024/10/22 20:34:59
-permalink: /production_doc/27023b50/
+permalink: /production_doc/X152b/27023b50/
 ---
 
 ## X152b PC 生产初始化

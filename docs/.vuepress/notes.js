@@ -60,12 +60,25 @@ const zhEasyServerManageNote = defineNoteConfig({
   sidebar: 'auto'
 
 })
+const zhProductionDocNote = defineNoteConfig({
+  dir: 'production_doc',
+  link: '/production_doc',
+  // sidebar: ['', 'vimedge2'],
+  sidebar: 'auto'
+
+})
 
 
 export const zhNotes = defineNotesConfig({
   dir: 'notes',
   link: '/',
-  notes: [zhPx4CodeNote,zhRobotBaseNote,zhNormalHwBaseNote,zhLinuxBaseNote,zhEasyServerManageNote],
+  notes: [zhPx4CodeNote,
+    zhRobotBaseNote,
+    zhNormalHwBaseNote,
+    zhLinuxBaseNote,
+    zhEasyServerManageNote,
+    zhProductionDocNote,
+  ],
 })
 
 /* =================== locale: en-US ======================= */

@@ -13,7 +13,7 @@ export const zhNavbar = defineNavbarConfig([
       { text: '机器人基础', link: '/notes/robot_base/README.md' },
       { text: '硬件文档', link: '/notes/normal_hw/机载传感器/rtk.md' },
       { text: '简易服务器管理', link: '/notes/easy_server_manage/用户指南/user_manage.md' },
-      { text: '生产文档', link: '/notes/production_doc/' }
+      { text: '生产文档', link: '/notes/production_doc/X152b/X152b_for_product.md' }
     ]
   },
 ])

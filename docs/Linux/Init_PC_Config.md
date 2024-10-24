@@ -88,33 +88,39 @@ systemctl restart dnsmasq
 3. 在浏览器中使用 http://172.22.1.1/x/control  进入控制界面
 
     ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022233636.png) 
-    
-4. 现在你可以选择Dump镜像或者Write镜像。   
-### Dump镜像
 
-4. ==插入U盘==，选择==Dump image from eMMC== ,可以看到如下画面
-    ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022233817.png)
-5. U盘会被直接识别到,如图所示，现在选择==Start==
-    ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022233922.png)
-6. 现在选择==Start==,接着可看到如图所示进度条
-    ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022234108.png)
-7. dump完成，看到如下画面，可以断电拔出u盘了
-    ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022234827.png)
-8. 现在U盘里以及存储了新镜像的压缩包了
+4. 现在你可以选择Dump镜像或者Write镜像。
 
-## write 镜像
+:::: tabs
+@tab Write
+### write 镜像
 
-2. 启动电脑后，按住Function键并短按reset键进入 oowow    
-3. 在浏览器中使用 http://172.22.1.1/x/control  进入控制界面
+5. 启动电脑后，按住Function键并短按reset键进入 oowow    
+6. 在浏览器中使用 http://172.22.1.1/x/control  进入控制界面
     ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022233636.png)
-4. 选择    
+7. 选择    
     ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022210900.png)
     ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022210940.png)
     ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022211121.png)
 
-4. 开始 写入
+8. 开始 写入
     ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022211209.png)
 
+@tab Dump
+### Dump镜像
+5. ==插入U盘==，选择==Dump image from eMMC== ,可以看到如下画面
+    ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022233817.png)
+6. U盘会被直接识别到,如图所示，现在选择==Start==
+    ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022233922.png)
+7. 现在选择==Start==,接着可看到如图所示进度条
+    ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022234108.png)
+8. dump完成，看到如下画面
+    ![](https://emnavi-doc-img.oss-cn-beijing.aliyuncs.com/hyaline_kb/X152b/dump-write/image_20241022234827.png)
+9. 不要直接拔电，Power off 掉计算机 ，然后拔出u盘
+10. 现在U盘里以及存储了新镜像的压缩包了
+
+
+::::
 
 ##
 
