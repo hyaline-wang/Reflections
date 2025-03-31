@@ -3,7 +3,9 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { plumeTheme } from 'vuepress-theme-plume'
 
 export default defineUserConfig({
-  base: '/Knowledge-Base/',
+  // base: '/Knowledge-Base/',
+  base: '/',
+
   lang: 'zh-CN',
   locales: {
     '/': {

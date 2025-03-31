@@ -7,7 +7,9 @@ import { enNotes, zhNotes } from './notes'
  */
 export default defineThemeConfig({
   logo: 'notebook.svg',
-  base: '/Knowledge-Base/',
+  // base: '/Knowledge-Base/',
+  base: '/',
+
   // your git repo url
   docsRepo: '',
   docsDir: 'docs',
