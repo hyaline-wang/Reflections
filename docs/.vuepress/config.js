@@ -22,11 +22,11 @@ export default defineUserConfig({
 
   theme: plumeTheme({
     // 添加您的部署域名
-    hostname: 'https://hyaline-wang.github.io/Knowledge-Base/',
-    encrypt: {
-      global: true,
-      admin: ['123456'],
-    },
+    hostname: 'https://hyaline.qyswarm.top',
+    // encrypt: {
+    //   global: true,
+    //   admin: ['123456'],
+    // },
     plugins: {
       /**
        * Shiki 代码高亮
