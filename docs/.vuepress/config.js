@@ -22,7 +22,7 @@ export default defineUserConfig({
 
   theme: plumeTheme({
     // 添加您的部署域名
-    hostname: 'https://hyaline.qyswarm.top',
+    hostname: 'https://hyaline.qyswarm.top/',
     // encrypt: {
     //   global: true,
     //   admin: ['123456'],
